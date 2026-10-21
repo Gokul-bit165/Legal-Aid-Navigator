@@ -187,7 +187,7 @@ export const AgentResponsePage: React.FC = () => {
     for (const { key, title } of sectionKeys) {
         const val = response?.[key];
         if (val != null && typeof val === 'string' && val.trim()) {
-            explicitSections.push({ key, title, body: cleanMarkdown(val) });
+            explicitSections.push({ key, title, body: key === 'urgency' ? humanize(cleanMarkdown(val)) : cleanMarkdown(val) });
         }
     }
 
@@ -275,11 +275,14 @@ export const AgentResponsePage: React.FC = () => {
                 <div className="w-full max-w-2xl space-y-5 animate-fade-in">
                     {/* Header */}
                     <div className="card text-center">
-                        <h2 className="text-2xl font-serif mb-2">AI Agent Response</h2>
+                        <h2 className="text-2xl font-serif mb-2">Recommended legal aid options</h2>
                         <p className="text-sm text-bark-500" style={{ lineHeight: 1.6 }}>
                             {hasData
-                                ? 'Your legal aid request has been processed. Here are the results.'
+                                ? 'Choose a service below to send your request for human review. Nothing is booked until a person approves it.'
                                 : 'Your request was submitted but no structured response was returned.'}
+                        </p>
+                        <p className="text-xs text-bark-400 mt-3" style={{ lineHeight: 1.5 }}>
+                            This service helps you find free legal aid. It does not give legal advice.
                         </p>
                     </div>
 
@@ -341,7 +344,9 @@ export const AgentResponsePage: React.FC = () => {
                             <div style={{ display: 'flex', flexDirection: 'column', gap: 12, padding: '16px 0 0' }}>
                                 {services.map((svc) => {
                                     const isSelected = selectedServiceId === svc.service_id;
-                                    const isVerified = svc.verification_status.toLowerCase() === 'verified';
+                                    const vs = svc.verification_status.toLowerCase();
+                                    const isVerified = vs === 'verified' || vs === 'verified_in_catalogue';
+                                    const isListed = vs === 'official_listed';
 
                                     return (
                                         <div
@@ -377,12 +382,12 @@ export const AgentResponsePage: React.FC = () => {
                                                         fontWeight: 600,
                                                         padding: '2px 8px',
                                                         borderRadius: 20,
-                                                        background: isVerified ? '#dcfce7' : '#fef9c3',
-                                                        color: isVerified ? '#166534' : '#854d0e',
+                                                        background: isVerified ? '#dcfce7' : isListed ? '#e0f2fe' : '#fef9c3',
+                                                        color: isVerified ? '#166534' : isListed ? '#075985' : '#854d0e',
                                                         whiteSpace: 'nowrap',
                                                     }}
                                                 >
-                                                    {isVerified ? '✓ Verified' : '⚠ Unverified'}
+                                                    {isVerified ? '✓ Verified' : isListed ? 'Listed in official directory' : '⚠ Unverified'}
                                                 </span>
                                             </div>
 

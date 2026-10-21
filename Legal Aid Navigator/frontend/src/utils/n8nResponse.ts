@@ -201,9 +201,9 @@ function parseAppointment(value: unknown): AppointmentRequest | null {
 
   return {
     requested_service: fieldToText(appointment.requested_service),
-    preferred_date: fieldToText(appointment.preferred_date),
-    preferred_time: fieldToText(appointment.preferred_time ?? appointment.preferred_time_slot),
-    contact_mode: fieldToText(appointment.contact_mode ?? appointment.contact_method),
+    preferred_date: fieldToText(appointment.preferred_date ?? appointment.preferredDate),
+    preferred_time: fieldToText(appointment.preferred_time ?? appointment.preferred_time_slot ?? appointment.preferredTimeSlot),
+    contact_mode: fieldToText(appointment.contact_mode ?? appointment.contact_method ?? appointment.mode),
     status: fieldToText(appointment.status) || 'pending_human_review',
   };
 }

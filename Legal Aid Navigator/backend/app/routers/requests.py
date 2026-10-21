@@ -181,7 +181,7 @@ def build_status_out(req: LegalAidRequest) -> RequestStatusOut:
         )
 
     # Build summary
-    location_parts = [p for p in [req.state, req.district, req.city] if p]
+    location_parts = list(dict.fromkeys(p for p in [req.state, req.district, req.city] if p))
     summary = RequestSummaryOut(
         location=", ".join(location_parts) if location_parts else "—",
         legal_issue=req.issue_type or "—",
@@ -261,7 +261,7 @@ def record_review(
     req.n8n_request_id = body.n8n_request_id
     req.service_id = body.service_id
     req.service_name = body.service_name
-    req.service_match_status = "verified" if body.service_match_status == "verified" else "unverified"
+    req.service_match_status = "verified" if body.service_match_status.startswith("verified") else "unverified"
     audit.log(
         db, req.id, user.username, "sent_for_human_review",
         f"{body.service_name or body.service_id} · service {req.service_match_status} · ref {body.n8n_request_id}",
@@ -283,6 +283,8 @@ def approve_booking(
     if req.user_id != user.id:
         raise HTTPException(403, "Not your request")
     if req.fee_detected:
+        audit.log(db, req.id, "agent", "booking_refused_fee", "Approval received but booking stopped: unexpected fee flagged")
+        db.commit()
         raise HTTPException(409, "Booking stopped: an unexpected fee was detected. A staff member must review it.")
     if req.status != "awaiting_approval":
         raise HTTPException(400, "Request is not awaiting booking approval")
@@ -299,6 +301,9 @@ def approve_booking(
     slot_ids = [s["id"] for s in data.get("slots", [])]
     if body.slot_id not in slot_ids:
         raise HTTPException(400, "Invalid slot ID")
+
+    audit.log(db, req.id, user.username, "booking_approved", f"Applicant approved slot {body.slot_id}")
+    db.commit()
 
     # Launch booking in background
     start_booking_thread(req.id, body.slot_id)

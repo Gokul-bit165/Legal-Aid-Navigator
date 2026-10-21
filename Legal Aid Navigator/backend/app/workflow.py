@@ -289,6 +289,11 @@ def complete_booking(request_id_str: str, slot_id: str):
             _complete_subtask(db, stage5.id, 1)
 
             booking_ref = f"BK-{uuid.uuid4().hex[:8].upper()}"
+            if req:
+                from app import audit
+                audit.log(db, req.id, "agent", "booking_confirmed",
+                          f"Simulated portal returned reference {booking_ref}")
+                db.commit()
             booking_result = {
                 "confirmation_number": booking_ref,
                 "slot": chosen_slot,

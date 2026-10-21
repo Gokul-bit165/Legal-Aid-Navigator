@@ -1422,3 +1422,21 @@ h1, h2, h3, h4, h5, h6 {
   .personal-info-btn span, .logout-btn span { display: none; }
   .appt-status-btn span { display: none; }
 }
+
+
+/* Keep the six-step bar on one line: show full labels only for the current step on narrower screens */
+@media (max-width: 1599px) {
+  .step-item-inactive .step-label,
+  .step-item-completed .step-label { display: none; }
+  .step-item-inactive, .step-item-completed { padding: 6px 7px; }
+}
+@media (max-width: 760px) {
+  .step-nav-bar { flex-wrap: wrap; padding: 8px 12px; row-gap: 6px; }
+  .step-nav-logo { border-right: none; margin-right: 0; padding-right: 8px; }
+  .step-nav-logo-tag { display: none; }
+  .step-nav-actions span { display: none; }
+  .step-label { display: none; }
+  .step-nav-bar { flex-wrap: wrap !important; }
+  .step-nav-steps { order: 3; flex: 1 1 100%; justify-content: center; overflow-x: auto; }
+  .step-nav-actions { margin-left: auto; }
+}

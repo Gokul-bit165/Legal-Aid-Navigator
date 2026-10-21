@@ -144,7 +144,8 @@ export const AdminApplicationDetailPage: React.FC = () => {
           </Panel>
 
           <Panel>
-            <ol className="grid grid-cols-6 gap-1 pt-1" aria-label="Progress">
+            <div className="overflow-x-auto">
+            <ol className="grid grid-cols-6 gap-1 pt-1 min-w-[560px]" aria-label="Progress">
               {data.stages.map((s, i) => (
                 <li key={s.stage_number} className="relative flex flex-col items-center text-center">
                   {i > 0 && (
@@ -160,6 +161,7 @@ export const AdminApplicationDetailPage: React.FC = () => {
                 </li>
               ))}
             </ol>
+            </div>
           </Panel>
 
           <Panel>

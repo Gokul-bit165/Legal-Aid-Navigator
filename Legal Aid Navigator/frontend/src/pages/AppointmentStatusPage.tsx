@@ -465,7 +465,7 @@ const CurrentStagePanel: React.FC<{
         </div>
       )}
 
-      {stage.stage_number === 4 && stage.status === 'completed' && slots && slots.length > 0 && (
+      {stage.stage_number === 5 && stage.status === 'awaiting_approval' && slots && slots.length > 0 && (
         <div className="booking-approval">
           <h4 className="booking-approval-title">Available Appointment Slots</h4>
           <p className="booking-approval-desc">
@@ -620,7 +620,10 @@ export const AppointmentStatusPage: React.FC = () => {
       await approveBooking(requestId, slotId);
       await fetchStatus();
     } catch (err: unknown) {
-      const msg = err instanceof Error ? err.message : 'Booking failed. Please try again.';
+      const detail = (err as { response?: { data?: { detail?: unknown } } })?.response?.data?.detail;
+      const msg = typeof detail === 'string'
+        ? detail
+        : err instanceof Error ? 'Booking failed. Please try again.' : 'Booking failed. Please try again.';
       setBookingError(msg);
     } finally {
       setBookingLoading(false);

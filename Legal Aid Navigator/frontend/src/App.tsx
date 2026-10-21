@@ -48,7 +48,7 @@ const App: React.FC = () => {
     <AuthProvider>
       <FormProvider>
         <BrowserRouter>
-          <Toaster position="top-right" toastOptions={{ duration: 3000 }} />
+          <Toaster position="bottom-center" toastOptions={{ duration: 3000 }} />
           <Routes>
             {/* Root → Login */}
             <Route path="/" element={<Navigate to="/login" replace />} />

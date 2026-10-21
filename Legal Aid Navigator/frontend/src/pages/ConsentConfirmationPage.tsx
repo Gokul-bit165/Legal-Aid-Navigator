@@ -16,6 +16,8 @@ const prettifyValue = (val: unknown): string => {
   if (val === '' || val === null || val === undefined) return '—';
   if (typeof val === 'boolean') return val ? 'Yes' : 'No';
   if (typeof val === 'string') {
+    // Free text, names and emails are shown exactly as typed; only enum-like codes are reformatted.
+    if (!/^[a-z_]+$/.test(val)) return val;
     return val
       .replace(/_/g, ' ')
       .replace(/\b\w/g, (c) => c.toUpperCase());
