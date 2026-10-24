@@ -111,7 +111,11 @@ def _slot_authority(state: str) -> str:
 
 def _generate_slots(request: LegalAidRequest) -> list[dict]:
     from datetime import date, timedelta
-    authority = _slot_authority(request.state or "")
+    # Name the authority after the applicant's own district so the slots match the service they chose.
+    authority = (
+        f"District Legal Services Authority, {request.district}"
+        if request.district else _slot_authority(request.state or "")
+    )
     base_date = date.today()
     slots = []
     times = ["10:00 AM – 11:00 AM", "11:30 AM – 12:30 PM", "02:00 PM – 03:00 PM"]

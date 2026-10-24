@@ -552,6 +552,7 @@ Same olive and ivory palette as the applicant app. Status colours: Confirmed gre
 
 | Asset | Location | What it covers |
 |---|---|---|
+| Demo recording plan | `docs/DEMO_RECORDING_GUIDE.md` | Scene-by-scene script, timings from a rehearsal, judge Q&A, failure fallbacks |
 | Manual test cases | `docs/MANUAL_TEST_CASES.md` | About 70 cases: TC1–TC4, sign-in and access, the applicant journey, the admin portal, n8n, responsive layout, safety statements |
 | n8n proof script | `docs/verify_n8n.py` | 12 live checks of both workflows; prints timestamps and request IDs; exit code 0 when all pass |
 | Browser regression | Playwright scripts (kept outside the repo) | Admin portal journey, applicant journey, TC1 and TC2 in a real browser |
@@ -652,6 +653,8 @@ Legal Aid Navigator/
 └─ docs/
    ├─ PROJECT_DOCUMENTATION.md   this file
    ├─ MANUAL_TEST_CASES.md
+   ├─ DEMO_RECORDING_GUIDE.md    shot-by-shot plan for the submission video
+   ├─ start_demo.ps1             one-command clean demo environment
    └─ verify_n8n.py
 ```
 
@@ -661,7 +664,7 @@ Legal Aid Navigator/
 
 | # | Limitation | Impact | Planned fix |
 |---|---|---|---|
-| 1 | **No mock legal aid portal.** The booking step is a backend simulation with fixed delays and generated slots | "Confirmed" is not an authority's confirmation; the simulation can name a different authority than the applicant chose (for example Chennai for a Coimbatore request) | Build the mock portal and make the booking and verification steps call it |
+| 1 | **No mock legal aid portal.** The booking step is a backend simulation with fixed delays and generated slots | "Confirmed" is not an authority's confirmation; slots and dates are generated (the authority is named after the applicant's district) | Build the mock portal and make the booking and verification steps call it |
 | 2 | Fees are not detected automatically | TC2 depends on a staff flag or seed data | The mock portal reports fees; the booking step stops on them |
 | 3 | No OTP or CAPTCHA manual step | A brief requirement is not demonstrated | Add a human step in the mock portal flow |
 | 4 | Not deployed | The brief requires a deployed app | Deploy backend and frontend; add a reverse proxy for n8n |

@@ -1,0 +1,26 @@
+LEGAL AID NAVIGATOR - RAW WALKTHROUGH FOOTAGE
+Recorded 24 Oct 2026. No audio, no captions. 1080p VP9 .webm (mobile clip is 864x1872). A red dot shows the mouse.
+Total about 6 min 50 s. Clips follow the story in order; each starts from the sign-in page.
+
+ #  FILE                                       TIME   ROLE        WHAT IT SHOWS
+ 01 01_applicant_form_to_review.webm           1:36   Applicant   Sign in, six-step form, consent, recommendations, select a service, submit for review (request saved, "pending human review")
+                                                                  - about 10-17 s wait after "Finish & Submit" while the recommendation runs: trim it
+ 02 02_applicant_status_tracker.webm           0:18   Applicant   Appointment status: six-step tracker and the slots waiting for approval
+ 03 03_staff_dashboard_and_fee_flag.webm       0:41   Staff       Admin dashboard (counts), open the application, scroll the detail, flag an unexpected fee (booking stopped)
+ 04 04_applicant_refused_by_fee.webm           0:20   Applicant   TC2: picks a slot, Confirm Appointment, refused with "Booking stopped: an unexpected fee was detected"
+ 05 05_staff_clears_fee.webm                   0:21   Staff       Fee resolved: clears the fee flag
+ 06 06_applicant_approves_and_confirmed.webm   0:37   Applicant   TC1: approves a slot, booking completes, tracker shows confirmation
+ 07 07_staff_confirmed_and_audit_trail.webm    0:29   Staff       Appointment Confirmed card and the full audit trail (submitted > review > fee flagged > refused > cleared > approved > confirmed)
+ 08 08_staff_urgent_and_pending.webm           0:48   Staff       TC3: urgent request (court deadline in 3 days). TC4: pending request; staff try to mark it Confirmed and are refused
+ 09 09_staff_filters_and_all_pages.webm        0:45   Staff       Status filters, pagination, Users, Appointments, Authorities, Reports, Settings, logout
+ 10 10_mobile_applicant_and_staff.webm         0:53   Both        Phone-sized layout: applicant form and status, then admin list and detail
+
+BEFORE YOU EDIT - THINGS TO KNOW
+ * Booking is simulated. Say "simulated portal" or "mock portal" in your voice-over; do not say an authority confirmed it.
+ * The fee in clip 03 is flagged by staff. Present it as "the portal reports a fee, staff flag it", not as automatic detection.
+ * Dropdown menus change instantly (native lists are not drawn in a recording).
+ * Not included (needs your own screen): the n8n editor, workflow Executions, the n8n data table, and the proof script
+   (python docs/verify_n8n.py -> 12/12 passed). Record those yourself and drop them between clips 01 and 03.
+ * Suggested order if you want the shortest cut: 01 (trim waits) -> 03 -> 04 -> 05 -> 06 -> 07 -> 08 -> 09; use 02 and 10 as cutaways.
+ * Request IDs on screen (for example LA-2026-00009) come from this recording's sample data.
+ * Convert if your editor will not open .webm: VLC (Media > Convert), HandBrake, Clipchamp or CapCut all accept it.

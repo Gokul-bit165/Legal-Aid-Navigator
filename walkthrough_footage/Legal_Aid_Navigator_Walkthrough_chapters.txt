@@ -1,0 +1,14 @@
+CHAPTERS  (time in the finished video)
+
+0:00:00  Title
+0:00:05  The problem
+0:00:12  How it works
+0:00:21  Chapter 1 - Applicant requests help
+0:01:38  Chapter 2 - TC2 unexpected fee
+0:02:18  Chapter 3 - TC1 booking confirmed
+0:03:14  Chapter 4 - TC3 urgent, TC4 pending
+0:03:53  Chapter 5 - Admin portal
+0:04:21  Real vs simulated
+0:04:31  Closing
+
+Total length: 0:04:36  (277 s)

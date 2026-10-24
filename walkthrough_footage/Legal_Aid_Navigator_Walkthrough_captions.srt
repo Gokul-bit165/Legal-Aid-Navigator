@@ -1,0 +1,120 @@
+1
+00:00:24,050 --> 00:00:26,650
+[APPLICANT] Sign in to the applicant app
+
+2
+00:00:27,150 --> 00:00:31,650
+[APPLICANT] Step 1 of 6  ·  Location: state and district
+
+3
+00:00:32,150 --> 00:00:36,980
+[APPLICANT] Step 2  ·  The legal issue, any court case, and urgency
+
+4
+00:00:37,480 --> 00:00:40,010
+[APPLICANT] Step 3  ·  Eligibility is collected as evidence, never auto-decided
+
+5
+00:00:40,510 --> 00:00:46,410
+[APPLICANT] Step 4  ·  Contact details stay in our database and are never sent to the AI
+
+6
+00:00:46,910 --> 00:00:49,740
+[APPLICANT] Step 5  ·  Preferred appointment date and time
+
+7
+00:00:50,240 --> 00:00:59,370
+[APPLICANT] Step 6  ·  Review everything, then give three separate consents
+
+8
+00:00:59,870 --> 00:01:03,370
+[AGENT  ·  WORKFLOW 1] n8n and Gemini read the case and the official legal aid directory
+
+9
+00:01:03,870 --> 00:01:13,370
+[AGENT  ·  WORKFLOW 1] Listed in an official directory  -  fees and availability still marked 'needs verification'
+
+10
+00:01:13,870 --> 00:01:19,370
+[APPLICANT] The applicant selects a service and submits it for human review
+
+11
+00:01:19,870 --> 00:01:30,570
+[AGENT  ·  WORKFLOW 2] Saved as 'pending human review'  -  nothing is booked and no provider is assigned
+
+12
+00:01:31,070 --> 00:01:38,640
+[APPLICANT] The workflow pauses at step 5 and waits for the applicant's approval
+
+13
+00:01:42,340 --> 00:01:48,570
+[STAFF] Admin dashboard: every application with its status and urgent flags
+
+14
+00:01:49,070 --> 00:01:57,240
+[STAFF] Staff open an application: progress, applicant details and the audit trail
+
+15
+00:01:57,740 --> 00:02:08,170
+[STAFF  ·  TC2] The portal reports an unexpected fee  -  staff flag it and the booking is stopped
+
+16
+00:02:08,670 --> 00:02:11,740
+[APPLICANT  ·  TC2] The applicant picks a slot and clicks Confirm Appointment
+
+17
+00:02:12,240 --> 00:02:18,610
+[APPLICANT  ·  TC2] Refused  -  even after approval, an unexpected fee stops the booking
+
+18
+00:02:22,310 --> 00:02:32,310
+[STAFF  ·  TC2] Fee resolved  -  staff clear the flag so the booking can continue
+
+19
+00:02:32,810 --> 00:02:36,880
+[APPLICANT  ·  TC1] The applicant approves a slot  -  only now does the booking run
+
+20
+00:02:37,380 --> 00:02:41,880
+[APPLICANT  ·  TC1] The booking is processed and a booking record is stored
+
+21
+00:02:42,380 --> 00:02:52,180
+[APPLICANT  ·  TC1] Confirmed  -  the tracker shows step 6 complete
+
+22
+00:02:52,680 --> 00:02:57,550
+[STAFF  ·  TC1] Staff open the same application
+
+23
+00:02:58,050 --> 00:03:05,050
+[STAFF  ·  TC1] Appointment Confirmed  -  a booking record exists and its date is verified
+
+24
+00:03:05,550 --> 00:03:14,450
+[STAFF] Every decision is in the audit trail, from submission to confirmation
+
+25
+00:03:18,150 --> 00:03:32,050
+[STAFF  ·  TC3] Court deadline in three days  -  flagged URGENT by a rule, not by the AI
+
+26
+00:03:32,550 --> 00:03:35,380
+[STAFF  ·  TC4] Next: a booking that is still pending
+
+27
+00:03:35,880 --> 00:03:44,880
+[STAFF  ·  TC4] The portal has not confirmed it  -  "No lawyer has been assigned"
+
+28
+00:03:45,380 --> 00:03:53,610
+[STAFF  ·  TC4] Staff try to mark it Confirmed  -  rejected: no booking confirmation on record
+
+29
+00:03:56,910 --> 00:04:06,240
+[STAFF] Filter by status, search and page through every application
+
+30
+00:04:06,740 --> 00:04:21,640
+[STAFF] Users  ·  Appointments  ·  Authorities  ·  Reports  ·  Settings
+

@@ -20,7 +20,7 @@ For testers and demo rehearsal. Run top to bottom the first time; each case also
 
 **Important limits to know before testing**
 - The booking step is **simulated** inside the backend (fixed delays, generated slots). It stands in for the mock legal aid portal, which has not been built. "Confirmed" for a new application means this simulation finished, not that a real authority confirmed it.
-- The simulated portal can name a different authority than the one the applicant chose (for example, Chennai for a Coimbatore request). Treat that as a known limitation of the simulation, not a pass or fail.
+- The simulated portal names the authority after the applicant's district (for example, "District Legal Services Authority, Coimbatore"). Slots and dates are generated, not real.
 - The **Appointment status** page shows the application you submitted most recently in that browser.
 - Fees are **not detected automatically**. A fee is flagged by a staff member (case ADM-09) or comes from the seeded data.
 - n8n runs live on the cloud account. Each new service + date + time combination you submit in section C saves one real record in the n8n data table.

@@ -207,7 +207,7 @@ export const AdminApplicationDetailPage: React.FC = () => {
                 {[
                   ['Appointment ID', data.booking_confirmation.confirmation_number],
                   ['Date & Time', `${plainDate(data.booking_confirmation.date)}, ${data.booking_confirmation.time_slot}`],
-                  ['Mode', data.booking_confirmation.mode],
+                  ['Mode', data.booking_confirmation.mode.replace(/_/g, ' ')],
                   ['Authority', data.booking_confirmation.authority_name],
                 ].map(([k, v]) => <div key={k}><dt className="text-xs text-bark-400">{k}</dt><dd className="font-semibold text-olive-800">{v}</dd></div>)}
               </dl>

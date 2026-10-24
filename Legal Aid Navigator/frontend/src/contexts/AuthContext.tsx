@@ -1,5 +1,6 @@
 import { createContext, useContext, useState, useEffect, ReactNode } from 'react';
 import { User } from '../types';
+import { API_BASE_URL } from '../config';
 
 interface AuthContextType {
   user: User | null;
@@ -27,7 +28,7 @@ const DEMO_USER: User = {
 const DEMO_TOKEN = 'demo-jwt-token';
 
 async function tryBackendLogin(username: string, password: string) {
-  const res = await fetch('http://localhost:8000/api/v1/auth/login', {
+  const res = await fetch(`${API_BASE_URL}/api/v1/auth/login`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ username, password }),
@@ -40,7 +41,7 @@ async function tryBackendLogin(username: string, password: string) {
 }
 
 async function tryBackendRegister(username: string, email: string, password: string) {
-  const res = await fetch('http://localhost:8000/api/v1/auth/register', {
+  const res = await fetch(`${API_BASE_URL}/api/v1/auth/register`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ username, email, password }),
